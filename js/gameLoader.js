@@ -57,9 +57,33 @@ const GameLoader = {
                 break;
             case 'readingLarge':
                 Games.readingLarge(gameArea);
-                break;
-            case 'commaPlacement':
+                break;            case 'commaPlacement':
                 Games.commaPlacement(gameArea);
+                break;
+            case 'predecessorConcept':
+                gameArea.dataset.conceptModule = 'predecessor';
+                Games.conceptIntro(gameArea);
+                break;
+            case 'numberNeighbors':
+                Games.numberNeighbors(gameArea);
+                break;
+            case 'beforeAndAfter':
+                Games.beforeAndAfter(gameArea);
+                break;            case 'numberLine':
+                Games.numberLine(gameArea);
+                break;
+            case 'patternsConcept':
+                gameArea.dataset.conceptModule = 'patterns';
+                Games.conceptIntro(gameArea);
+                break;
+            case 'patternDetective':
+                Games.patternDetective(gameArea);
+                break;
+            case 'patternMaker':
+                Games.patternMaker(gameArea);
+                break;
+            case 'sequenceCompleter':
+                Games.sequenceCompleter(gameArea);
                 break;
             case 'chequeWriter':
                 Games.chequeWriter(gameArea);

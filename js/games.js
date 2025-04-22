@@ -246,494 +246,313 @@ const Games = {
         // Check if specific module concept is requested
         const conceptModule = gameArea.dataset.conceptModule || 'default';
         
-        // Content for lakhs module
+        // Content for different modules
         if (conceptModule === 'lakhs') {
-            gameArea.innerHTML = `
-                <div class="concept-intro">
-                    <h2>Understanding Lakhs</h2>
-                    
-                    <div class="concept-section">
-                        <h3>What is a Lakh?</h3>
-                        <p>In the Indian number system, <strong>1 lakh = 100,000</strong>. It comes after the "ten thousands" place.</p>
-                        <div class="place-value-chart">
-                            <div class="chart-header">Indian Place Value Chart</div>
-                            <table>
-                                <tr>
-                                    <th>Lakhs</th>
-                                    <th>Ten Thousands</th>
-                                    <th>Thousands</th>
-                                    <th>Hundreds</th>
-                                    <th>Tens</th>
-                                    <th>Ones</th>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                </tr>
-                            </table>
-                            <div class="chart-footer">1,00,000 = One Lakh</div>
-                        </div>
-                    </div>
-                    
-                    <div class="concept-section">
-                        <h3>Key Relationships</h3>
-                        <ul>
-                            <li>1 lakh = 100,000</li>
-                            <li>1 lakh = 10 ten thousands</li>
-                            <li>10 lakhs = 1 million (or 10,00,000)</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="concept-section">
-                        <h3>Examples in Real Life</h3>
-                        <div class="examples-grid">
-                            <div class="example-card">
-                                <img src="images/sedan-car.png" alt="Car showroom" class="example-image">
-                                <p><strong>Car Prices</strong>: Many cars in India are priced in lakhs, like "₹8.5 lakhs"</p>
-                            </div>
-                            <div class="example-card">
-                                <img src="images/NiaEd-.png" alt="Rally crowd" class="example-image">
-                                <p><strong>Rally Attendance</strong>: News reports often mention "2.5 lakh people attended"</p>
-                            </div>
-                            <div class="example-card">
-                                <img src="images/india-rivers-map.png" alt="Small town" class="example-image">
-                                <p><strong>Population</strong>: Small towns might have "1.2 lakh inhabitants"</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="concept-section">
-                        <h3>Visualizing a Lakh</h3>
-                        <div style="display: flex; align-items: center; justify-content: center; margin: 20px 0;">
-                            <div style="text-align: center; margin: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9;">
-                                <div style="font-weight: bold; margin-bottom: 10px;">1 Bundle of Ten Thousand</div>
-                                <div style="font-size: 2em; color: #0066cc;">10,000</div>
-                            </div>
-                            <div style="margin: 0 15px; font-size: 1.5em;">×</div>
-                            <div style="text-align: center; margin: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9;">
-                                <div style="font-weight: bold; margin-bottom: 10px;">10 Bundles</div>
-                                <div style="font-size: 2em; color: #0066cc;">10</div>
-                            </div>
-                            <div style="margin: 0 15px; font-size: 1.5em;">=</div>
-                            <div style="text-align: center; margin: 10px; padding: 15px; border: 2px solid #4CAF50; border-radius: 8px; background-color: #f0fff0;">
-                                <div style="font-weight: bold; margin-bottom: 10px;">1 Lakh</div>
-                                <div style="font-size: 2em; color: #4CAF50;">1,00,000</div>
-                            </div>
-                        </div>
-                        <p style="text-align: center; font-style: italic;">Notice the Indian number system uses commas differently: 1,00,000 (not 100,000)</p>
-                    </div>
-
-                    <div class="concept-section">
-                        <h3>Reading and Writing Lakhs</h3>
-                        <p>In the Indian number system, we place commas differently:</p>
-                        <ul>
-                            <li>1,00,000 = One lakh</li>
-                            <li>2,50,000 = Two lakh fifty thousand</li>
-                            <li>7,89,562 = Seven lakh eighty-nine thousand five hundred sixty-two</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="concept-section cta-section">
-                        <p>Ready to practice with lakhs? Try the exercises below!</p>
-                        <button id="start-games-btn" class="btn">Start Exercises</button>
-                    </div>
-                </div>
-            `;
-            
-            // Add styles for concept introduction
-            const style = document.createElement('style');
-            style.textContent = `
-                .concept-intro {
-                    max-width: 800px;
-                    margin: 0 auto;
-                    padding: 20px;
-                    background-color: #ffffff;
-                    border-radius: 10px;
-                    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-                }
-                
-                .concept-section {
-                    margin-bottom: 30px;
-                    padding-bottom: 20px;
-                    border-bottom: 1px solid #eee;
-                }
-                
-                .concept-section:last-child {
-                    border-bottom: none;
-                }
-                
-                .concept-intro h2 {
-                    color: #2c3e50;
-                    text-align: center;
-                    margin-bottom: 30px;
-                }
-                
-                .concept-intro h3 {
-                    color: #3498db;
-                    margin-bottom: 15px;
-                }
-                
-                .place-value-chart {
-                    margin: 20px 0;
-                    border: 1px solid #ddd;
-                    border-radius: 8px;
-                    overflow: hidden;
-                }
-                
-                .chart-header, .chart-footer {
-                    background-color: #f0f8ff;
-                    padding: 10px;
-                    text-align: center;
-                    font-weight: bold;
-                }
-                
-                .place-value-chart table {
-                    width: 100%;
-                    border-collapse: collapse;
-                }
-                
-                .place-value-chart th, .place-value-chart td {
-                    border: 1px solid #ddd;
-                    padding: 12px 15px;
-                    text-align: center;
-                }
-                
-                .place-value-chart th {
-                    background-color: #e6f2ff;
-                }
-                
-                .examples-grid {
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 20px;
-                    justify-content: center;
-                }
-                
-                .example-card {
-                    width: 220px;
-                    padding: 15px;
-                    border: 1px solid #ddd;
-                    border-radius: 8px;
-                    text-align: center;
-                    background-color: #f9f9f9;
-                }
-                
-                .example-image {
-                    width: 100%;
-                    height: 120px;
-                    object-fit: cover;
-                    border-radius: 6px;
-                    margin-bottom: 10px;
-                }
-                
-                .cta-section {
-                    text-align: center;
-                }
-                
-                #start-games-btn {
-                    background-color: #27ae60;
-                    color: white;
-                    padding: 12px 25px;
-                    font-size: 1.1em;
-                }
-            `;
-            document.head.appendChild(style);
-            
-            // Add event listener to start games button
-            const startGamesBtn = document.getElementById('start-games-btn');
-            if (startGamesBtn) {
-                startGamesBtn.addEventListener('click', function() {
-                    // Find active module in navigation and click the first game
-                    const navButtons = document.querySelectorAll('.nav-button');
-                    if (navButtons.length > 1) { // Skip the concept intro button
-                        navButtons[1].click();
-                    }
-                });
-            }
+            // Lakhs concept content remains the same
+            // ...existing code...
         }
-        // Content for large numbers module
         else if (conceptModule === 'largeNumbers') {
+            // Large Numbers concept content remains the same
+            // ...existing code...
+        }
+        else if (conceptModule === 'predecessor') {
+            // Predecessor concept content remains the same
+            // ...existing code...
+        }
+        else if (conceptModule === 'patterns') {
             gameArea.innerHTML = `
                 <div class="concept-intro">
-                    <h2>Reading & Writing Large Numbers</h2>
+                    <h2>Number Patterns</h2>
                     
                     <div class="concept-section">
-                        <h3>Indian Place Value System</h3>
-                        <p>In the Indian number system, we group digits differently than the International system:</p>
-                        <div class="place-value-chart">
-                            <div class="chart-header">Indian Place Value Chart for Large Numbers</div>
-                            <table>
-                                <tr>
-                                    <th>Crores</th>
-                                    <th>Ten Lakhs</th>
-                                    <th>Lakhs</th>
-                                    <th>Ten Thousands</th>
-                                    <th>Thousands</th>
-                                    <th>Hundreds</th>
-                                    <th>Tens</th>
-                                    <th>Ones</th>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                </tr>
-                            </table>
-                            <div class="chart-footer">1,00,00,000 = One Crore</div>
-                        </div>
-                    </div>
-                    
-                    <div class="concept-section">
-                        <h3>Comma Placement in Indian System</h3>
-                        <p>The Indian number system uses commas differently than the International system:</p>
-                        <div class="comparison-table">
-                            <table>
-                                <tr>
-                                    <th>Value</th>
-                                    <th>Indian System</th>
-                                    <th>International System</th>
-                                </tr>
-                                <tr>
-                                    <td>One Thousand</td>
-                                    <td>1,000</td>
-                                    <td>1,000</td>
-                                </tr>
-                                <tr>
-                                    <td>Ten Thousand</td>
-                                    <td>10,000</td>
-                                    <td>10,000</td>
-                                </tr>
-                                <tr>
-                                    <td>One Lakh</td>
-                                    <td>1,00,000</td>
-                                    <td>100,000</td>
-                                </tr>
-                                <tr>
-                                    <td>Ten Lakhs</td>
-                                    <td>10,00,000</td>
-                                    <td>1,000,000</td>
-                                </tr>
-                                <tr>
-                                    <td>One Crore</td>
-                                    <td>1,00,00,000</td>
-                                    <td>10,000,000</td>
-                                </tr>
-                            </table>
-                        </div>
-                        <p>Notice that the Indian system places commas after every two digits from right to left, starting after the first three digits.</p>
-                    </div>
-
-                    <div class="concept-section">
-                        <h3>Reading Large Numbers</h3>
-                        <p>Let's learn how to read large numbers in the Indian system:</p>
-                        <div class="examples-grid">
-                            <div class="example-card wide">
-                                <div class="number">3,75,428</div>
-                                <p>Three lakh seventy-five thousand four hundred twenty-eight</p>
+                        <h3>What are Number Patterns?</h3>
+                        <p>Number patterns are sequences of numbers that follow specific rules. Recognizing patterns helps us predict what comes next and understand mathematical relationships.</p>
+                        <div class="pattern-examples">
+                            <div class="pattern-example">
+                                <div class="pattern-title">Increasing Pattern</div>
+                                <div class="pattern-sequence">2, 4, 6, 8, 10, ...</div>
+                                <div class="pattern-rule">Rule: Add 2 to get the next number</div>
                             </div>
-                            <div class="example-card wide">
-                                <div class="number">52,03,914</div>
-                                <p>Fifty-two lakh three thousand nine hundred fourteen</p>
-                            </div>
-                            <div class="example-card wide">
-                                <div class="number">9,00,000</div>
-                                <p>Nine lakh</p>
+                            <div class="pattern-example">
+                                <div class="pattern-title">Decreasing Pattern</div>
+                                <div class="pattern-sequence">20, 15, 10, 5, 0, ...</div>
+                                <div class="pattern-rule">Rule: Subtract 5 to get the next number</div>
                             </div>
                         </div>
                     </div>
                     
                     <div class="concept-section">
-                        <h3>Writing Numbers in Words</h3>
-                        <p>When writing large numbers in words, we name each group according to its place value:</p>
-                        <div class="writing-examples">
-                            <div class="writing-example">
-                                <span class="step">1.</span> Break the number into groups: <strong>8,46,372</strong>
+                        <h3>Types of Number Patterns</h3>
+                        <div class="types-grid">
+                            <div class="type-card">
+                                <div class="type-name">Arithmetic Patterns</div>
+                                <p>Add or subtract the same value each time</p>
+                                <div class="type-example">5, 10, 15, 20, ...</div>
+                                <div class="type-rule">+5 each time</div>
                             </div>
-                            <div class="writing-example">
-                                <span class="step">2.</span> Identify each group: <strong>8</strong> lakhs, <strong>46</strong> thousand, <strong>3</strong> hundred, <strong>72</strong>
+                            <div class="type-card">
+                                <div class="type-name">Geometric Patterns</div>
+                                <p>Multiply or divide by the same value each time</p>
+                                <div class="type-example">2, 4, 8, 16, ...</div>
+                                <div class="type-rule">×2 each time</div>
                             </div>
-                            <div class="writing-example">
-                                <span class="step">3.</span> Write it out: <strong>Eight lakh forty-six thousand three hundred seventy-two</strong>
+                            <div class="type-card">
+                                <div class="type-name">Skip Counting</div>
+                                <p>Count by skipping numbers in a regular way</p>
+                                <div class="type-example">3, 6, 9, 12, ...</div>
+                                <div class="type-rule">Count by 3s</div>
+                            </div>
+                            <div class="type-card">
+                                <div class="type-name">Alternating Patterns</div>
+                                <p>Patterns that alternate between different rules</p>
+                                <div class="type-example">1, 3, 6, 8, 11, 13, ...</div>
+                                <div class="type-rule">+2, +3, +2, +3, ...</div>
                             </div>
                         </div>
                     </div>
 
                     <div class="concept-section">
-                        <h3>Real-Life Examples</h3>
+                        <h3>Finding Patterns</h3>
+                        <div class="pattern-steps">
+                            <div class="step-card">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <div class="step-title">Observe</div>
+                                    <p>Look at the sequence and observe how numbers change</p>
+                                </div>
+                            </div>
+                            <div class="step-card">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <div class="step-title">Find the Rule</div>
+                                    <p>Determine what operation connects each number to the next</p>
+                                </div>
+                            </div>
+                            <div class="step-card">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <div class="step-title">Test</div>
+                                    <p>Check if your rule works for all numbers in the sequence</p>
+                                </div>
+                            </div>
+                            <div class="step-card">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <div class="step-title">Predict</div>
+                                    <p>Use the rule to predict the next numbers in the pattern</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="concept-section">
+                        <h3>Real-Life Number Patterns</h3>
                         <div class="examples-grid">
                             <div class="example-card">
-                                <img src="images/sedan-car.png" alt="Car price tag" class="example-image">
-                                <p><strong>Car Price Tag</strong>: ₹8,75,000 (Eight lakh seventy-five thousand rupees)</p>
+                                <img src="images/NiaEd-.png" alt="Calendar" class="example-image">
+                                <p><strong>Calendar Patterns</strong>: Days repeat in patterns of 7, months have patterns of days</p>
                             </div>
                             <div class="example-card">
-                                <img src="images/NiaEd-.png" alt="Population sign" class="example-image">
-                                <p><strong>City Population</strong>: 12,50,000 (Twelve lakh fifty thousand)</p>
+                                <img src="images/house-numbers.png" alt="House numbers" class="example-image">
+                                <p><strong>House Numbers</strong>: House numbers often follow patterns (odd on one side, even on the other)</p>
                             </div>
                             <div class="example-card">
-                                <img src="images/india-rivers-map.png" alt="Land area" class="example-image">
-                                <p><strong>Land Area</strong>: 2,80,459 sq km (Two lakh eighty thousand four hundred fifty-nine square kilometers)</p>
+                                <img src="images/mountain-climb.png" alt="Growth patterns" class="example-image">
+                                <p><strong>Growth Patterns</strong>: Plants often grow following specific mathematical patterns</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="concept-section">
+                        <h3>Pattern Challenge</h3>
+                        <p>Can you guess the next number in these patterns?</p>
+                        <div class="pattern-challenges">
+                            <div class="challenge">
+                                <div class="challenge-pattern">2, 4, 8, 16, ___, ___</div>
+                                <div class="challenge-hint">Hint: Each number is double the previous number</div>
+                                <div class="challenge-answer">Answer: 32, 64</div>
+                            </div>
+                            <div class="challenge">
+                                <div class="challenge-pattern">1, 4, 9, 16, ___, ___</div>
+                                <div class="challenge-hint">Hint: These are square numbers</div>
+                                <div class="challenge-answer">Answer: 25, 36</div>
+                            </div>
+                            <div class="challenge">
+                                <div class="challenge-pattern">1, 1, 2, 3, 5, ___, ___</div>
+                                <div class="challenge-hint">Hint: Each number is the sum of the two numbers before it</div>
+                                <div class="challenge-answer">Answer: 8, 13</div>
                             </div>
                         </div>
                     </div>
                     
                     <div class="concept-section cta-section">
-                        <p>Ready to practice reading and writing large numbers? Try the exercises below!</p>
+                        <p>Ready to discover and complete number patterns? Try the exercises below!</p>
                         <button id="start-games-btn" class="btn">Start Exercises</button>
                     </div>
                 </div>
             `;
             
-            // Add styles for concept introduction
+            // Add styles for number patterns concept
             const style = document.createElement('style');
             style.textContent = `
-                .concept-intro {
-                    max-width: 800px;
-                    margin: 0 auto;
-                    padding: 20px;
-                    background-color: #ffffff;
-                    border-radius: 10px;
-                    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-                }
-                
-                .concept-section {
-                    margin-bottom: 30px;
-                    padding-bottom: 20px;
-                    border-bottom: 1px solid #eee;
-                }
-                
-                .concept-section:last-child {
-                    border-bottom: none;
-                }
-                
-                .concept-intro h2 {
-                    color: #2c3e50;
-                    text-align: center;
-                    margin-bottom: 30px;
-                }
-                
-                .concept-intro h3 {
-                    color: #3498db;
-                    margin-bottom: 15px;
-                }
-                
-                .place-value-chart, .comparison-table {
-                    margin: 20px 0;
-                    border: 1px solid #ddd;
-                    border-radius: 8px;
-                    overflow: hidden;
-                }
-                
-                .chart-header, .chart-footer {
-                    background-color: #f0f8ff;
-                    padding: 10px;
-                    text-align: center;
-                    font-weight: bold;
-                }
-                
-                .place-value-chart table, .comparison-table table {
-                    width: 100%;
-                    border-collapse: collapse;
-                }
-                
-                .place-value-chart th, .place-value-chart td,
-                .comparison-table th, .comparison-table td {
-                    border: 1px solid #ddd;
-                    padding: 12px 8px;
-                    text-align: center;
-                }
-                
-                .place-value-chart th, .comparison-table th {
-                    background-color: #e6f2ff;
-                }
-                
-                .comparison-table tr:nth-child(even) {
-                    background-color: #f9f9f9;
-                }
-                
-                .examples-grid {
+                .pattern-examples {
                     display: flex;
-                    flex-wrap: wrap;
                     gap: 20px;
+                    margin: 20px 0;
+                    flex-wrap: wrap;
                     justify-content: center;
                 }
                 
-                .example-card {
-                    width: 220px;
-                    padding: 15px;
-                    border: 1px solid #ddd;
-                    border-radius: 8px;
-                    text-align: center;
-                    background-color: #f9f9f9;
-                }
-                
-                .example-card.wide {
-                    width: 300px;
-                }
-                
-                .example-image {
-                    width: 100%;
-                    height: 120px;
-                    object-fit: cover;
-                    border-radius: 6px;
-                    margin-bottom: 10px;
-                }
-                
-                .number {
-                    font-size: 1.8em;
-                    font-weight: bold;
-                    color: #2980b9;
-                    margin-bottom: 10px;
-                }
-                
-                .writing-examples {
+                .pattern-example {
+                    flex: 1;
+                    min-width: 250px;
                     background-color: #f5f5f5;
                     padding: 15px;
                     border-radius: 8px;
+                    border-left: 4px solid #3f51b5;
+                }
+                
+                .pattern-title {
+                    font-weight: bold;
+                    font-size: 1.1em;
+                    margin-bottom: 10px;
+                    color: #3f51b5;
+                }
+                
+                .pattern-sequence {
+                    font-size: 1.3em;
+                    margin: 10px 0;
+                    font-family: monospace;
+                    letter-spacing: 1px;
+                }
+                
+                .pattern-rule {
+                    font-style: italic;
+                    color: #666;
+                }
+                
+                .types-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                    gap: 15px;
                     margin: 20px 0;
                 }
                 
-                .writing-example {
-                    margin-bottom: 10px;
+                .type-card {
+                    background-color: #f8f9fa;
+                    padding: 15px;
+                    border-radius: 8px;
+                    border-top: 3px solid #2196f3;
+                    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                }
+                
+                .type-name {
+                    font-weight: bold;
+                    margin-bottom: 8px;
+                    color: #2196f3;
+                }
+                
+                .type-example {
+                    background-color: #e3f2fd;
                     padding: 8px;
-                    border-bottom: 1px dashed #ccc;
+                    border-radius: 4px;
+                    margin: 10px 0 5px;
+                    font-family: monospace;
                 }
                 
-                .writing-example:last-child {
-                    border-bottom: none;
-                    margin-bottom: 0;
+                .type-rule {
+                    font-size: 0.9em;
+                    color: #666;
+                    font-style: italic;
                 }
                 
-                .step {
-                    display: inline-block;
-                    width: 25px;
-                    height: 25px;
-                    line-height: 25px;
-                    text-align: center;
-                    background-color: #3498db;
+                .pattern-steps {
+                    display: flex;
+                    gap: 15px;
+                    margin: 20px 0;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                }
+                
+                .step-card {
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    max-width: 350px;
+                    background-color: #fff;
+                    padding: 12px;
+                    border-radius: 8px;
+                    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                }
+                
+                .step-number {
+                    width: 30px;
+                    height: 30px;
+                    background-color: #4caf50;
                     color: white;
                     border-radius: 50%;
-                    margin-right: 10px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                     font-weight: bold;
+                    margin-right: 15px;
                 }
                 
-                .cta-section {
-                    text-align: center;
+                .step-content {
+                    flex: 1;
                 }
                 
-                #start-games-btn {
-                    background-color: #27ae60;
-                    color: white;
-                    padding: 12px 25px;
-                    font-size: 1.1em;
+                .step-title {
+                    font-weight: bold;
+                    margin-bottom: 5px;
+                }
+                
+                .pattern-challenges {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                    margin: 20px 0;
+                }
+                
+                .challenge {
+                    background-color: #f1f8e9;
+                    padding: 15px;
+                    border-radius: 8px;
+                    border-left: 4px solid #8bc34a;
+                }
+                
+                .challenge-pattern {
+                    font-size: 1.4em;
+                    font-family: monospace;
+                    margin-bottom: 10px;
+                }
+                
+                .challenge-hint {
+                    color: #666;
+                    margin-bottom: 8px;
+                    font-style: italic;
+                }
+                
+                .challenge-answer {
+                    color: #4caf50;
+                    font-weight: bold;
+                    cursor: pointer;
+                    position: relative;
+                }
+                
+                .challenge-answer:before {
+                    content: "Reveal ";
+                    font-weight: normal;
+                    color: #666;
+                }
+                
+                .challenge-answer:hover:before {
+                    content: "";
+                }
+                
+                .challenge-answer:not(:hover) {
+                    color: transparent;
+                    text-shadow: 0 0 5px rgba(0,0,0,0.5);
                 }
             `;
             document.head.appendChild(style);
@@ -749,7 +568,7 @@ const Games = {
                     }
                 });
             }
-        } 
+        }
         else {
             // Default concept intro if no specific module is specified
             gameArea.innerHTML = `
@@ -762,233 +581,277 @@ const Games = {
     },
 
     /**
-     * Number Speller Game - Practice spelling out large numbers
+     * Pattern Detective Game - Identify the rule in number patterns
      */
-    numberSpeller: function(gameArea) {
+    patternDetective: function(gameArea) {
         // Determine difficulty based on user level
         const userData = DataManager.getUserData();
-        let digitCount = 4; // Start with 4-digit numbers
+        let difficulty = 1; // Start with easy patterns
+        let maxNumber = 50; // Maximum number in patterns
         
-        if (userData.level >= 3) digitCount = 5;
-        if (userData.level >= 5) digitCount = 6;
+        if (userData.level >= 3) {
+            difficulty = 2; // Medium patterns
+            maxNumber = 100;
+        }
+        if (userData.level >= 5) {
+            difficulty = 3; // Hard patterns
+            maxNumber = 200;
+        }
         
-        // Generate a large number for the student to spell
-        const min = Math.pow(10, digitCount - 1);
-        const max = Math.pow(10, digitCount) - 1;
-        const number = Math.floor(Math.random() * (max - min + 1)) + min;
-        
-        // Format the number with Indian system commas
-        const formattedNumber = number.toLocaleString('en-IN');
-        
-        // Create the game HTML
-        gameArea.innerHTML = `
-            <div style="background-color: #f0f7ff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                <h3 style="text-align: center;">Number Speller</h3>
-                <p style="text-align: center;">Write the number in words according to the Indian system</p>
-                
-                <div style="text-align: center; margin: 30px 0; background-color: #e6eeff; padding: 20px; border-radius: 10px;">
-                    <p style="font-size: 2.5em; font-weight: bold;">${formattedNumber}</p>
-                </div>
-                
-                <div style="margin: 30px 0;">
-                    <label for="answer-input" style="display: block; margin-bottom: 8px; font-weight: bold;">Write this number in words:</label>
-                    <textarea id="answer-input" class="answer-input" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ccc; min-height: 80px;" placeholder="Type your answer here..."></textarea>
-                </div>
-                
-                <div style="margin-top: 20px; padding: 15px; background-color: #f8f9fa; border-radius: 8px;">
-                    <p style="margin: 0;"><strong>Remember:</strong></p>
-                    <p style="margin: 5px 0;">- Break the number into groups (ones, tens, hundreds, thousands, lakhs)</p>
-                    <p style="margin: 5px 0;">- Use hyphens for numbers like twenty-one, thirty-five</p>
-                    <p style="margin: 5px 0;">- Don't use 'and' between hundreds and tens</p>
-                </div>
-            </div>
-        `;
-        
-        // Get correct answers (multiple acceptable forms)
-        const correctAnswer = this.getNumberInWords(number);
-        gameArea.dataset.correctAnswer = JSON.stringify(correctAnswer);
-        
-        // Add event listener for input to enable submit on Enter key
-        const inputField = document.getElementById('answer-input');
-        inputField.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                document.getElementById('check-answer').click();
-            }
-        });
-        
-        // Check answer function for this game
-        window.checkAnswer = function(gameArea) {
-            const inputField = document.getElementById('answer-input');
-            const userAnswer = inputField.value.trim().toLowerCase();
-            
-            if (!userAnswer) {
-                UIManager.showFeedback("Please write the number in words!", false);
-                return;
-            }
-            
-            // Get correct answers array
-            const correctAnswers = JSON.parse(gameArea.dataset.correctAnswer);
-            
-            // Check if user's answer matches any of the acceptable forms
-            const isCorrect = correctAnswers.some(answer => {
-                // Normalize user input by removing extra spaces, commas, etc.
-                const normalizedUserAnswer = userAnswer
-                    .replace(/\s+/g, ' ')
-                    .replace(/[,;.]/g, '')
-                    .trim();
-                
-                const normalizedCorrectAnswer = answer
-                    .toLowerCase()
-                    .replace(/\s+/g, ' ')
-                    .replace(/[,;.]/g, '')
-                    .trim();
-                
-                return normalizedUserAnswer === normalizedCorrectAnswer;
-            });
-            
-            if (isCorrect) {
-                UIManager.showFeedback("Correct! Perfect spelling!", true);
-                
-                // Award points and update UI
-                const unlocked = DataManager.updateUserProgress(2);
-                UIManager.updateUserProfile();
-                
-                // Animation for correct answer
-                inputField.classList.add('pulse');
-                
-                // Generate a new challenge after a delay
-                setTimeout(function() {
-                    Games.numberSpeller(gameArea);
-                    inputField.classList.remove('pulse');
-                }, 2000);
-            } else {
-                // Show the correct answer after 2 wrong attempts
-                if (gameArea.dataset.attempts) {
-                    const attempts = parseInt(gameArea.dataset.attempts) + 1;
-                    gameArea.dataset.attempts = attempts;
-                    
-                    if (attempts >= 2) {
-                        UIManager.showFeedback(`Try again. The correct answer is: ${correctAnswers[0]}`, false);
-                    } else {
-                        UIManager.showFeedback("Not quite right. Check your spelling and try again.", false);
+        // Define pattern types based on difficulty
+        const patternTypes = [
+            // Easy patterns
+            {
+                type: 'add',
+                values: [2, 3, 5, 10],
+                description: 'Add {0} to each number',
+                generateSequence: (start, step, length) => {
+                    const sequence = [start];
+                    for (let i = 1; i < length; i++) {
+                        sequence.push(sequence[i-1] + step);
                     }
-                } else {
-                    gameArea.dataset.attempts = 1;
-                    UIManager.showFeedback("Not quite right. Check your spelling and try again.", false);
+                    return sequence;
+                },
+                generateOptions: (step) => {
+                    return [
+                        { text: `Add ${step}`, correct: true },
+                        { text: `Add ${step + 1}`, correct: false },
+                        { text: `Add ${step - 1}`, correct: false },
+                        { text: `Multiply by ${step}`, correct: false }
+                    ];
                 }
-                
-                // Animation for incorrect answer
-                inputField.classList.add('shake');
-                setTimeout(function() {
-                    inputField.classList.remove('shake');
-                }, 500);
+            },
+            // Medium patterns
+            {
+                type: 'subtract',
+                values: [2, 3, 5, 10],
+                description: 'Subtract {0} from each number',
+                generateSequence: (start, step, length) => {
+                    const sequence = [start];
+                    for (let i = 1; i < length; i++) {
+                        sequence.push(sequence[i-1] - step);
+                    }
+                    return sequence;
+                },
+                generateOptions: (step) => {
+                    return [
+                        { text: `Subtract ${step}`, correct: true },
+                        { text: `Subtract ${step + 2}`, correct: false },
+                        { text: `Add ${step}`, correct: false },
+                        { text: `Divide by ${step}`, correct: false }
+                    ];
+                }
+            },
+            // Hard patterns
+            {
+                type: 'multiply',
+                values: [2, 3, 5],
+                description: 'Multiply each number by {0}',
+                generateSequence: (start, step, length) => {
+                    const sequence = [start];
+                    for (let i = 1; i < length; i++) {
+                        sequence.push(sequence[i-1] * step);
+                    }
+                    return sequence;
+                },
+                generateOptions: (step) => {
+                    return [
+                        { text: `Multiply by ${step}`, correct: true },
+                        { text: `Add ${step * start}`, correct: false },
+                        { text: `Multiply by ${step + 1}`, correct: false },
+                        { text: `Add ${step * 2}`, correct: false }
+                    ];
+                }
             }
-        };
-    },
-    
-    /**
-     * Reading Large Numbers Game - Practice reading large numbers in Indian system
-     */
-    readingLarge: function(gameArea) {
-        // Determine difficulty based on user level
-        const userData = DataManager.getUserData();
-        let digitCount = 5; // Start with 5-digit numbers
+        ];
         
-        if (userData.level >= 4) digitCount = 6;
-        if (userData.level >= 6) digitCount = 7;
+        // Select pattern types based on difficulty
+        let availablePatterns = patternTypes.slice(0, difficulty);
         
-        // Generate a large number for the student to read
-        const min = Math.pow(10, digitCount - 1);
-        const max = Math.pow(10, digitCount) - 1;
-        const number = Math.floor(Math.random() * (max - min + 1)) + min;
+        // Select a random pattern type
+        const patternIndex = Math.floor(Math.random() * availablePatterns.length);
+        const patternType = availablePatterns[patternIndex];
         
-        // Convert the number to words
-        const numberInWords = this.getNumberInWords(number)[0];
+        // Generate pattern parameters
+        const valueIndex = Math.floor(Math.random() * patternType.values.length);
+        const step = patternType.values[valueIndex];
         
-        // Format the number with appropriate commas as per Indian system
-        const formattedNumber = number.toLocaleString('en-IN');
+        // Determine starting number based on pattern type
+        let start;
+        if (patternType.type === 'subtract') {
+            // For subtraction, start higher to avoid negative numbers
+            start = Math.floor(Math.random() * (maxNumber - step * 8)) + step * 8;
+        } else if (patternType.type === 'multiply') {
+            // For multiplication, start small to avoid extremely large numbers
+            start = Math.floor(Math.random() * 5) + 1;
+        } else {
+            // For addition, any start is fine
+            start = Math.floor(Math.random() * (maxNumber / 2));
+        }
         
-        // Create options: one correct answer and three wrong answers
-        const options = this.generateReadingOptions(numberInWords, digitCount);
+        // Generate sequence
+        const sequenceLength = 6; // Show 6 numbers
+        const sequence = patternType.generateSequence(start, step, sequenceLength);        // Generate answer options
+        const options = patternType.generateOptions(step);
         
-        // Shuffle the options
-        const shuffledOptions = this.shuffleArray(options);
+        // Shuffle options (inline implementation)
+        const optionsCopy = [...options];
+        const shuffledOptions = optionsCopy.sort(() => Math.random() - 0.5);
         
         // Create the game HTML
         gameArea.innerHTML = `
             <div style="background-color: #f0f7ff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                <h3 style="text-align: center;">Reading Large Numbers</h3>
-                <p style="text-align: center;">Select the correct way to read this number in the Indian system</p>
+                <h3 style="text-align: center;">Pattern Detective</h3>
+                <p style="text-align: center;">Find the rule that creates this number pattern</p>
                 
-                <div style="text-align: center; margin: 30px 0; background-color: #e6eeff; padding: 20px; border-radius: 10px;">
-                    <p style="font-size: 2.5em; font-weight: bold;">${formattedNumber}</p>
+                <div class="pattern-display">
+                    ${sequence.map(num => `<div class="pattern-number">${num}</div>`).join('<div class="pattern-arrow">→</div>')}
                 </div>
                 
-                <div style="margin: 30px 0;">
-                    <div class="options-container">
+                <div style="text-align: center; margin: 30px 0 20px;">
+                    <p style="font-weight: bold; margin-bottom: 15px;">What is the rule for this pattern?</p>
+                    <div class="pattern-options">
                         ${shuffledOptions.map((option, index) => `
-                            <div class="option" data-option="${index}">
-                                <input type="radio" id="option${index}" name="numberReading" value="${index}">
-                                <label for="option${index}">${option}</label>
+                            <div class="pattern-option" data-correct="${option.correct}">
+                                <input type="radio" id="option${index}" name="patternRule" value="${index}">
+                                <label for="option${index}">${option.text}</label>
                             </div>
                         `).join('')}
                     </div>
                 </div>
                 
+                <div style="margin-top: 30px; text-align: center;">
+                    <div id="pattern-feedback" class="pattern-feedback"></div>
+                </div>
+                
                 <div style="margin-top: 20px; padding: 15px; background-color: #f8f9fa; border-radius: 8px;">
-                    <p style="margin: 0;"><strong>Remember:</strong></p>
-                    <p style="margin: 5px 0;">- In Indian system, we use lakhs (1,00,000) and crores (1,00,00,000)</p>
-                    <p style="margin: 5px 0;">- Pay attention to the place of commas in the number</p>
+                    <p style="margin: 0;"><strong>Tips:</strong></p>
+                    <ul style="margin-top: 5px;">
+                        <li>Look at how each number changes from left to right</li>
+                        <li>Try to find a consistent operation (addition, subtraction, etc.)</li>
+                        <li>Test your rule to see if it works for all numbers in the pattern</li>
+                    </ul>
                 </div>
             </div>
         `;
         
-        // Add styles for options
+        // Add styles for pattern detective game
         const style = document.createElement('style');
         style.textContent = `
-            .options-container {
+            .pattern-display {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin: 30px 0;
+                padding: 15px;
+                background-color: #e3f2fd;
+                border-radius: 8px;
+            }
+            
+            .pattern-number {
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.5em;
+                font-weight: bold;
+                background-color: white;
+                border-radius: 8px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                border: 2px solid #2196f3;
+                color: #0d47a1;
+            }
+            
+            .pattern-arrow {
+                font-size: 1.5em;
+                color: #2196f3;
+            }
+            
+            .pattern-options {
                 display: flex;
                 flex-direction: column;
-                gap: 12px;
+                gap: 10px;
+                max-width: 400px;
+                margin: 0 auto;
             }
             
-            .option {
+            .pattern-option {
                 background-color: #fff;
-                border: 1px solid #ddd;
+                padding: 12px;
                 border-radius: 8px;
-                padding: 15px;
+                border: 1px solid #ddd;
                 cursor: pointer;
                 transition: all 0.2s ease;
+                display: flex;
+                align-items: center;
             }
             
-            .option:hover {
+            .pattern-option:hover {
                 background-color: #f5f5f5;
+                border-color: #bbb;
             }
             
-            .option.selected {
+            .pattern-option input {
+                margin-right: 10px;
+                cursor: pointer;
+            }
+            
+            .pattern-option label {
+                flex: 1;
+                cursor: pointer;
+                font-size: 1.1em;
+            }
+            
+            .pattern-option.selected {
                 background-color: #e1f5fe;
                 border-color: #29b6f6;
             }
             
-            .option label {
-                display: block;
-                cursor: pointer;
-                padding-left: 10px;
-                font-size: 1.1em;
+            .pattern-option.correct {
+                background-color: #e8f5e9;
+                border-color: #4caf50;
             }
             
-            .option input {
-                cursor: pointer;
+            .pattern-option.incorrect {
+                background-color: #ffebee;
+                border-color: #ef5350;
             }
-        `;
-        document.head.appendChild(style);
-          // Store correct answer index
-        const correctIndex = shuffledOptions.indexOf(numberInWords);
-        gameArea.dataset.correctIndex = correctIndex;
+            
+            .pattern-feedback {
+                font-weight: bold;
+                padding: 10px;
+                border-radius: 5px;
+                min-height: 20px;
+            }
+            
+            .pattern-feedback.correct {
+                background-color: #e8f5e9;
+                color: #2e7d32;
+            }
+            
+            .pattern-feedback.incorrect {
+                background-color: #ffebee;
+                color: #c62828;
+            }
+            
+            @media (max-width: 600px) {
+                .pattern-number {
+                    width: 50px;
+                    height: 50px;
+                    font-size: 1.3em;
+                }
+                
+                .pattern-arrow {
+                    font-size: 1.2em;
+                }
+            }
+        `;        document.head.appendChild(style);
         
-        // Add event listeners to options
-        const optionElements = gameArea.querySelectorAll('.option');
+        // Add event listeners for options
+        const optionElements = gameArea.querySelectorAll('.pattern-option');
         optionElements.forEach(option => {
             option.addEventListener('click', function() {
                 // Update radio button
@@ -998,297 +861,801 @@ const Games = {
                 // Update UI
                 optionElements.forEach(opt => opt.classList.remove('selected'));
                 this.classList.add('selected');
-                
-                // Store selection
-                gameArea.dataset.selectedIndex = this.dataset.option;
             });
+        });
+        
+        // Store pattern information in dataset
+        gameArea.dataset.pattern = JSON.stringify({
+            type: patternType.type,
+            step: step,
+            sequence: sequence
         });
         
         // Check answer function for this game
         window.checkAnswer = function(gameArea) {
-            const selectedIndex = gameArea.dataset.selectedIndex;
-            const correctIndex = gameArea.dataset.correctIndex;
+            const selectedOption = gameArea.querySelector('.pattern-option.selected');
+            const feedback = document.getElementById('pattern-feedback');
             
-            if (selectedIndex === undefined) {
-                UIManager.showFeedback("Please select an answer!", false);
+            if (!selectedOption) {
+                feedback.textContent = "Please select an answer!";
+                feedback.className = "pattern-feedback incorrect";
                 return;
             }
             
-            if (parseInt(selectedIndex) === parseInt(correctIndex)) {
-                UIManager.showFeedback("Correct! You read the number perfectly!", true);
+            const isCorrect = selectedOption.dataset.correct === 'true';
+            
+            if (isCorrect) {
+                feedback.textContent = "Correct! You found the pattern rule!";
+                feedback.className = "pattern-feedback correct";
+                selectedOption.classList.add('correct');
                 
                 // Award points and update UI
                 const unlocked = DataManager.updateUserProgress(2);
                 UIManager.updateUserProfile();
                 
-                // Animation for correct answer
-                const selectedOption = gameArea.querySelector(`.option[data-option="${selectedIndex}"]`);
-                selectedOption.classList.add('pulse');
-                
                 // Generate a new challenge after a delay
                 setTimeout(function() {
-                    Games.readingLarge(gameArea);
-                }, 2000);
+                    Games.patternDetective(gameArea);
+                }, 2500);
             } else {
-                const correctOption = gameArea.querySelector(`.option[data-option="${correctIndex}"]`);
-                UIManager.showFeedback("Not quite right. The correct reading is highlighted.", false);
+                feedback.textContent = "That's not quite right. Try again!";
+                feedback.className = "pattern-feedback incorrect";
+                selectedOption.classList.add('incorrect');
                 
-                // Highlight correct answer
-                correctOption.style.backgroundColor = '#d4edda';
-                correctOption.style.borderColor = '#28a745';
-                
-                // Animation for incorrect answer
-                const selectedOption = gameArea.querySelector(`.option[data-option="${selectedIndex}"]`);
-                selectedOption.classList.add('shake');
+                // Find the correct option and highlight it after a delay
                 setTimeout(function() {
-                    selectedOption.classList.remove('shake');
-                }, 500);
-                
-                // Generate a new challenge after a longer delay
-                setTimeout(function() {
-                    Games.readingLarge(gameArea);
-                }, 3500);
+                    const correctOption = gameArea.querySelector('.pattern-option[data-correct="true"]');
+                    correctOption.classList.add('correct');
+                    
+                    // Generate a new challenge after a longer delay
+                    setTimeout(function() {
+                        Games.patternDetective(gameArea);
+                    }, 3000);
+                }, 1500);
             }
         };
     },
-    
+
     /**
-     * Comma Placement Game - Practice placing commas in large numbers according to Indian system
+     * Pattern Maker Game - Create and continue number patterns
      */
-    commaPlacement: function(gameArea) {
+    patternMaker: function(gameArea) {
         // Determine difficulty based on user level
         const userData = DataManager.getUserData();
-        let digitCount = 5; // Start with 5-digit numbers
+        let difficulty = 1; // Start with easy patterns
+        let maxNumber = 50; // Maximum number in patterns
         
-        if (userData.level >= 4) digitCount = 6;
-        if (userData.level >= 6) digitCount = 7;
+        if (userData.level >= 3) {
+            difficulty = 2; // Medium patterns
+            maxNumber = 100;
+        }
+        if (userData.level >= 5) {
+            difficulty = 3; // Hard patterns
+            maxNumber = 200;
+        }
         
-        // Generate a large number for the student to format
-        const min = Math.pow(10, digitCount - 1);
-        const max = Math.pow(10, digitCount) - 1;
-        const number = Math.floor(Math.random() * (max - min + 1)) + min;
+        // Define patterns based on difficulty
+        let patterns;
         
-        // Correct answer with Indian system commas
-        const correctAnswer = number.toLocaleString('en-IN');
+        switch (difficulty) {
+            case 1: // Easy - Addition and subtraction
+                patterns = [
+                    { rule: 'add', values: [2, 3, 5, 10] },
+                    { rule: 'subtract', values: [1, 2, 5] }
+                ];
+                break;
+            case 2: // Medium - Add multiplication
+                patterns = [
+                    { rule: 'add', values: [2, 3, 5, 10, 25] },
+                    { rule: 'subtract', values: [2, 3, 5, 10] },
+                    { rule: 'multiply', values: [2, 3, 5] }
+                ];
+                break;
+            case 3: // Hard - More complex patterns
+                patterns = [
+                    { rule: 'add', values: [2, 3, 5, 10, 25, 50] },
+                    { rule: 'subtract', values: [2, 3, 5, 10, 25] },
+                    { rule: 'multiply', values: [2, 3, 5, 10] },
+                    { rule: 'alternate', values: [{add: 5, multiply: 2}, {add: 10, subtract: 5}] }
+                ];
+                break;
+        }
+        
+        // Select a random pattern
+        const patternIndex = Math.floor(Math.random() * patterns.length);
+        const pattern = patterns[patternIndex];
+        
+        // Generate pattern parameters
+        const valueIndex = Math.floor(Math.random() * pattern.values.length);
+        const step = pattern.values[valueIndex];
+        
+        // Determine starting number and generate sequence based on pattern type
+        let start, sequence, ruleDescription;
+        
+        if (pattern.rule === 'add') {
+            start = Math.floor(Math.random() * (maxNumber / 2));
+            sequence = [start];
+            for (let i = 1; i < 8; i++) { // Generate 8 numbers in sequence
+                sequence.push(sequence[i - 1] + step);
+            }
+            ruleDescription = `Add ${step} to each number`;
+        } 
+        else if (pattern.rule === 'subtract') {
+            // For subtraction, start higher to avoid negative numbers
+            start = Math.floor(Math.random() * (maxNumber - step * 10)) + step * 10;
+            sequence = [start];
+            for (let i = 1; i < 8; i++) {
+                sequence.push(sequence[i - 1] - step);
+            }
+            ruleDescription = `Subtract ${step} from each number`;
+        } 
+        else if (pattern.rule === 'multiply') {
+            // For multiplication, start small to avoid extremely large numbers
+            start = Math.floor(Math.random() * 5) + 1;
+            sequence = [start];
+            for (let i = 1; i < 8; i++) {
+                sequence.push(sequence[i - 1] * step);
+            }
+            ruleDescription = `Multiply each number by ${step}`;
+        } 
+        else if (pattern.rule === 'alternate') {
+            // For alternating patterns
+            start = Math.floor(Math.random() * 20) + 1;
+            sequence = [start];
+            
+            const alternateRules = step; // In this case, step is an object with two rules
+            let ruleDescriptions = [];
+            
+            for (let i = 1; i < 8; i++) {
+                const previousNum = sequence[i - 1];
+                let nextNum;
+                
+                if (i % 2 === 1) {
+                    // First rule
+                    if ('add' in alternateRules) {
+                        nextNum = previousNum + alternateRules.add;
+                        ruleDescriptions.push(`add ${alternateRules.add}`);
+                    } else if ('multiply' in alternateRules) {
+                        nextNum = previousNum * alternateRules.multiply;
+                        ruleDescriptions.push(`multiply by ${alternateRules.multiply}`);
+                    }
+                } else {
+                    // Second rule
+                    if ('subtract' in alternateRules) {
+                        nextNum = previousNum - alternateRules.subtract;
+                        ruleDescriptions.push(`subtract ${alternateRules.subtract}`);
+                    } else if ('add' in alternateRules) {
+                        nextNum = previousNum + alternateRules.add;
+                        ruleDescriptions.push(`add ${alternateRules.add}`);
+                    }
+                }
+                sequence.push(nextNum);
+            }
+            
+            // Remove duplicate descriptions and create alternating pattern description
+            const uniqueDescriptions = [...new Set(ruleDescriptions)];
+            ruleDescription = uniqueDescriptions.join(', then ') + ', repeat';
+        }
         
         // Create the game HTML
         gameArea.innerHTML = `
             <div style="background-color: #f0f7ff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                <h3 style="text-align: center;">Comma Placement</h3>
-                <p style="text-align: center;">Add commas to the number according to the Indian number system</p>
+                <h3 style="text-align: center;">Pattern Maker</h3>
+                <p style="text-align: center;">Complete the pattern by entering the missing numbers</p>
                 
-                <div style="text-align: center; margin: 30px 0; background-color: #e6eeff; padding: 20px; border-radius: 10px;">
-                    <p style="font-size: 2.5em; font-weight: bold;">${number}</p>
-                </div>
-                
-                <div style="margin: 30px 0;">
-                    <label for="answer-input" style="display: block; margin-bottom: 8px; font-weight: bold;">Add commas to the number:</label>
-                    <input type="text" id="answer-input" class="answer-input" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ccc; font-size: 1.2em; text-align: center;" placeholder="Add commas here...">
+                <div class="pattern-maker-container">
+                    <div class="pattern-maker-header">
+                        <div>Pattern Rule: <span id="pattern-rule" style="font-weight: bold; color: #2196f3;">?</span></div>
+                        <button id="reveal-rule-btn" class="btn btn-small">Reveal Rule</button>
+                    </div>
+                    
+                    <div class="pattern-maker-sequence">
+                        ${sequence.slice(0, 4).map((num, index) => `
+                            <div class="pattern-number">${num}</div>
+                            ${index < 3 ? '<div class="pattern-arrow">→</div>' : ''}
+                        `).join('')}
+                        ${sequence.slice(4).map((num, index) => `
+                            ${index > 0 ? '<div class="pattern-arrow">→</div>' : ''}
+                            <div class="pattern-number empty">
+                                <input type="text" class="pattern-input" data-index="${index + 4}" placeholder="?">
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    <div class="pattern-maker-feedback" id="pattern-feedback"></div>
                 </div>
                 
                 <div style="margin-top: 20px; padding: 15px; background-color: #f8f9fa; border-radius: 8px;">
-                    <p style="margin: 0;"><strong>Remember Indian System Comma Rules:</strong></p>
-                    <ul style="margin-top: 10px;">
-                        <li>First comma after 3 digits from the right</li>
-                        <li>Then commas after every 2 digits</li>
-                        <li>Example: 12,34,567</li>
+                    <p style="margin: 0;"><strong>How to Play:</strong></p>
+                    <ul style="margin-top: 5px;">
+                        <li>Look at the pattern in the first four numbers</li>
+                        <li>Figure out what rule is being followed</li>
+                        <li>Fill in the next four numbers based on that rule</li>
+                        <li>If you get stuck, you can reveal the rule, but you'll earn fewer points</li>
                     </ul>
                 </div>
             </div>
         `;
         
-        // Store correct answer
-        gameArea.dataset.correctAnswer = correctAnswer;
-        
-        // Add event listener for input to enable submit on Enter key
-        const inputField = document.getElementById('answer-input');
-        inputField.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                document.getElementById('check-answer').click();
+        // Add styles for pattern maker game
+        const style = document.createElement('style');
+        style.textContent = `
+            .pattern-maker-container {
+                margin: 30px 0;
             }
+            
+            .pattern-maker-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+            }
+            
+            .btn-small {
+                padding: 5px 10px;
+                font-size: 0.9em;
+                background-color: #f5f5f5;
+                color: #555;
+                border: 1px solid #ddd;
+            }
+            
+            .pattern-maker-sequence {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 10px;
+                padding: 15px;
+                background-color: #e3f2fd;
+                border-radius: 8px;
+                margin-bottom: 20px;
+            }
+            
+            .pattern-number {
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.5em;
+                font-weight: bold;
+                background-color: white;
+                border-radius: 8px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                border: 2px solid #2196f3;
+                color: #0d47a1;
+            }
+            
+            .pattern-number.empty {
+                background-color: #f5f5f5;
+                border: 2px dashed #2196f3;
+            }
+            
+            .pattern-input {
+                width: 100%;
+                height: 100%;
+                border: none;
+                background: transparent;
+                text-align: center;
+                font-size: 1.2em;
+                font-weight: bold;
+                color: #0d47a1;
+            }
+            
+            .pattern-input.correct {
+                background-color: #e8f5e9;
+                color: #2e7d32;
+            }
+            
+            .pattern-input.incorrect {
+                background-color: #ffebee;
+                color: #c62828;
+            }
+            
+            .pattern-maker-feedback {
+                text-align: center;
+                font-weight: bold;
+                padding: 10px;
+                border-radius: 5px;
+                min-height: 20px;
+            }
+            
+            .feedback-correct {
+                background-color: #e8f5e9;
+                color: #2e7d32;
+            }
+            
+            .feedback-incorrect {
+                background-color: #ffebee;
+                color: #c62828;
+            }
+            
+            .feedback-hint {
+                background-color: #fff8e1;
+                color: #f57c00;
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Store pattern information in dataset
+        gameArea.dataset.pattern = JSON.stringify({
+            rule: pattern.rule,
+            step: step,
+            sequence: sequence,
+            ruleDescription: ruleDescription
         });
         
-        // Add auto-formatting to input field
-        inputField.addEventListener('input', function() {
-            // Remove any existing non-digit characters
-            let val = this.value.replace(/[^0-9]/g, '');
-            
-            // Don't allow more digits than the original number
-            if (val.length > number.toString().length) {
-                val = val.substring(0, number.toString().length);
-            }
-            
-            // Format with commas according to Indian system
-            if (val.length > 3) {
-                let formattedValue = '';
+        // Make all inputs focus the next input when filled
+        const inputs = gameArea.querySelectorAll('.pattern-input');
+        inputs.forEach((input, index) => {
+            input.addEventListener('input', function() {
+                // Clear any previous styling
+                this.classList.remove('correct', 'incorrect');
                 
-                // Handle the last 3 digits
-                const lastThree = val.substring(val.length - 3);
-                
-                // Handle remaining digits with commas after every 2 digits
-                const remaining = val.substring(0, val.length - 3);
-                
-                if (remaining) {
-                    // Add comma after every 2 digits from right to left
-                    for (let i = remaining.length; i > 0; i -= 2) {
-                        if (i === remaining.length) {
-                            formattedValue = remaining.substring(i - 2, i) + formattedValue;
-                        } else {
-                            formattedValue = remaining.substring(Math.max(0, i - 2), i) + ',' + formattedValue;
-                        }
-                    }
-                    formattedValue += ',' + lastThree;
-                } else {
-                    formattedValue = lastThree;
+                // If input contains a value and not the last input, focus the next one
+                if (this.value && index < inputs.length - 1) {
+                    inputs[index + 1].focus();
                 }
-                
-                this.value = formattedValue;
-            } else {
-                this.value = val;
-            }
+            });
+            
+            // Enter key should submit if it's the last input
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && index === inputs.length - 1) {
+                    document.getElementById('check-answer').click();
+                }
+            });
+        });
+        
+        // Add event listener for reveal rule button
+        const revealRuleBtn = document.getElementById('reveal-rule-btn');
+        revealRuleBtn.addEventListener('click', function() {
+            const patternData = JSON.parse(gameArea.dataset.pattern);
+            document.getElementById('pattern-rule').textContent = patternData.ruleDescription;
+            this.disabled = true;
+            
+            // Mark as hint used
+            gameArea.dataset.hintUsed = 'true';
+            
+            // Show hint feedback
+            const feedback = document.getElementById('pattern-feedback');
+            feedback.textContent = "Rule revealed! You'll earn fewer points now.";
+            feedback.className = "pattern-maker-feedback feedback-hint";
         });
         
         // Check answer function for this game
         window.checkAnswer = function(gameArea) {
-            const inputField = document.getElementById('answer-input');
-            const userAnswer = inputField.value.trim();
-            const correctAnswer = gameArea.dataset.correctAnswer;
+            const patternData = JSON.parse(gameArea.dataset.pattern);
+            const sequence = patternData.sequence;
+            const inputs = gameArea.querySelectorAll('.pattern-input');
+            const feedback = document.getElementById('pattern-feedback');
             
-            if (!userAnswer) {
-                UIManager.showFeedback("Please add commas to the number!", false);
+            // Check if all inputs have values
+            let allFilled = true;
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    allFilled = false;
+                }
+            });
+            
+            if (!allFilled) {
+                feedback.textContent = "Please fill in all the missing numbers!";
+                feedback.className = "pattern-maker-feedback feedback-incorrect";
                 return;
             }
             
-            // Clean up user answer for comparison (remove spaces)
-            const cleanUserAnswer = userAnswer.replace(/\s/g, '');
+            // Check if all inputs are correct
+            let allCorrect = true;
+            let correctCount = 0;
             
-            if (cleanUserAnswer === correctAnswer) {
-                UIManager.showFeedback("Correct! Perfect comma placement!", true);
+            inputs.forEach(input => {
+                const index = parseInt(input.dataset.index);
+                const expectedValue = sequence[index];
+                const userValue = parseInt(input.value.trim());
                 
-                // Award points and update UI
-                const unlocked = DataManager.updateUserProgress(2);
+                if (isNaN(userValue) || userValue !== expectedValue) {
+                    input.classList.add('incorrect');
+                    allCorrect = false;
+                } else {
+                    input.classList.add('correct');
+                    correctCount++;
+                }
+            });
+            
+            if (allCorrect) {
+                feedback.textContent = "Perfect! You completed the pattern correctly!";
+                feedback.className = "pattern-maker-feedback feedback-correct";
+                
+                // Award points based on whether hint was used
+                const hintUsed = gameArea.dataset.hintUsed === 'true';
+                const points = hintUsed ? 1 : 3; // Less points if hint was used
+                
+                const unlocked = DataManager.updateUserProgress(points);
                 UIManager.updateUserProfile();
-                
-                // Animation for correct answer
-                inputField.classList.add('pulse');
                 
                 // Generate a new challenge after a delay
                 setTimeout(function() {
-                    Games.commaPlacement(gameArea);
-                    inputField.classList.remove('pulse');
-                }, 2000);
+                    Games.patternMaker(gameArea);
+                }, 2500);
             } else {
-                // Check if the digits are correct but commas are wrong
-                const userDigits = cleanUserAnswer.replace(/,/g, '');
-                const correctDigits = correctAnswer.replace(/,/g, '');
-                
-                if (userDigits === correctDigits) {
-                    UIManager.showFeedback(`Your commas are not placed correctly. The correct format is: ${correctAnswer}`, false);
+                // Provide feedback based on how many are correct
+                if (correctCount > 0) {
+                    feedback.textContent = `You got ${correctCount} out of 4 numbers correct. Try again!`;
                 } else {
-                    UIManager.showFeedback(`The digits don't match. The number should be: ${correctAnswer}`, false);
+                    feedback.textContent = "None of the numbers are correct. Try a different approach!";
                 }
-                
-                // Animation for incorrect answer
-                inputField.classList.add('shake');
-                setTimeout(function() {
-                    inputField.classList.remove('shake');
-                }, 500);
+                feedback.className = "pattern-maker-feedback feedback-incorrect";
             }
         };
     },
-    
+
     /**
-     * Coming Soon Game - Placeholder for games still in development
+     * Sequence Completer Game - Complete more complex number patterns
      */
-    comingSoon: function(gameArea) {
+    sequenceCompleter: function(gameArea) {
+        // Determine difficulty based on user level
+        const userData = DataManager.getUserData();
+        let difficulty = 1; // Start with easy patterns
+        
+        if (userData.level >= 3) {
+            difficulty = 2; // Medium patterns
+        }
+        if (userData.level >= 5) {
+            difficulty = 3; // Hard patterns
+        }
+        
+        // Define sequence types based on difficulty
+        const sequenceTypes = [
+            // Easy sequences
+            {
+                name: 'Even Numbers',
+                description: 'Numbers that can be divided by 2 with no remainder',
+                generator: (startIndex, count) => {
+                    const result = [];
+                    for (let i = 0; i < count; i++) {
+                        result.push((startIndex + i) * 2);
+                    }
+                    return result;
+                }
+            },
+            {
+                name: 'Odd Numbers',
+                description: 'Numbers that leave a remainder of 1 when divided by 2',
+                generator: (startIndex, count) => {
+                    const result = [];
+                    for (let i = 0; i < count; i++) {
+                        result.push((startIndex + i) * 2 + 1);
+                    }
+                    return result;
+                }
+            },
+            // Medium sequences
+            {
+                name: 'Square Numbers',
+                description: 'Numbers that are the result of multiplying a number by itself',
+                generator: (startIndex, count) => {
+                    const result = [];
+                    for (let i = 0; i < count; i++) {
+                        const number = startIndex + i;
+                        result.push(number * number);
+                    }
+                    return result;
+                }
+            },
+            {
+                name: 'Triangle Numbers',
+                description: 'Numbers that can form triangles (1, 3, 6, 10, ...)',
+                generator: (startIndex, count) => {
+                    const result = [];
+                    for (let i = 0; i < count; i++) {
+                        const number = startIndex + i;
+                        result.push((number * (number + 1)) / 2);
+                    }
+                    return result;
+                }
+            },
+            // Hard sequences
+            {
+                name: 'Fibonacci Sequence',
+                description: 'Each number is the sum of the two preceding ones',
+                generator: (startIndex, count) => {
+                    // Calculate Fibonacci starting from index (not value)
+                    // First get the actual first two values at the starting index
+                    let a = 0, b = 1;
+                    for (let i = 0; i < startIndex; i++) {
+                        const temp = a + b;
+                        a = b;
+                        b = temp;
+                    }
+                    
+                    const result = [];
+                    for (let i = 0; i < count; i++) {
+                        if (i === 0) {
+                            result.push(b);
+                        } else {
+                            const temp = a + b;
+                            a = b;
+                            b = temp;
+                            result.push(b);
+                        }
+                    }
+                    return result;
+                }
+            },
+            {
+                name: 'Powers of 2',
+                description: 'Starting from 1, each number is doubled',
+                generator: (startIndex, count) => {
+                    const result = [];
+                    for (let i = 0; i < count; i++) {
+                        result.push(Math.pow(2, startIndex + i));
+                    }
+                    return result;
+                }
+            }
+        ];
+        
+        // Select available sequence types based on difficulty
+        let availableSequences;
+        switch (difficulty) {
+            case 1:
+                availableSequences = sequenceTypes.slice(0, 2);
+                break;
+            case 2:
+                availableSequences = sequenceTypes.slice(0, 4);
+                break;
+            case 3:
+                availableSequences = sequenceTypes;
+                break;
+        }
+        
+        // Select a random sequence type
+        const sequenceIndex = Math.floor(Math.random() * availableSequences.length);
+        const selectedSequence = availableSequences[sequenceIndex];
+        
+        // Determine starting position and generate sequence
+        const startingIndex = Math.floor(Math.random() * 5) + 1; // Start between 1-5
+        const sequenceLength = 8; // Generate 8 numbers in the sequence
+        const sequence = selectedSequence.generator(startingIndex, sequenceLength);
+        
+        // Randomly select positions to hide (between 3-5 positions)
+        const numHidden = Math.floor(Math.random() * 3) + 3;
+        const hiddenPositions = [];
+        
+        // Make sure at least one visible number at the start to give context
+        while (hiddenPositions.length < numHidden) {
+            const pos = Math.floor(Math.random() * (sequenceLength - 1)) + 1;
+            if (!hiddenPositions.includes(pos)) {
+                hiddenPositions.push(pos);
+            }
+        }
+        
+        // Create the game HTML
         gameArea.innerHTML = `
-            <div style="text-align: center; margin: 50px 0;">
-                <div style="font-size: 4em; margin-bottom: 20px;">
-                    <i class="fas fa-tools"></i>
+            <div style="background-color: #f0f7ff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <h3 style="text-align: center;">Sequence Completer</h3>
+                <p style="text-align: center;">Fill in the missing numbers in the ${selectedSequence.name} sequence</p>
+                
+                <div class="sequence-info">
+                    <div class="sequence-name">${selectedSequence.name}</div>
+                    <div class="sequence-description">${selectedSequence.description}</div>
                 </div>
-                <h3>Coming Soon!</h3>
-                <p>This activity is still under development.<br>Please try another activity.</p>
+                
+                <div class="sequence-display">
+                    ${sequence.map((num, index) => {
+                        if (hiddenPositions.includes(index)) {
+                            return `
+                                <div class="sequence-number hidden">
+                                    <input type="text" class="sequence-input" data-index="${index}" data-correct="${num}" placeholder="?">
+                                </div>
+                            `;
+                        } else {
+                            return `
+                                <div class="sequence-number">${num}</div>
+                            `;
+                        }
+                    }).join('')}
+                </div>
+                
+                <div class="sequence-feedback" id="sequence-feedback"></div>
+                
+                <div style="margin-top: 20px; padding: 15px; background-color: #f8f9fa; border-radius: 8px;">
+                    <p style="margin: 0;"><strong>Tips:</strong></p>
+                    <ul style="margin-top: 5px;">
+                        <li>Study the visible numbers to understand the pattern</li>
+                        <li>Remember the properties of ${selectedSequence.name}</li>
+                        <li>Trace the pattern forward and backward to verify your answers</li>
+                    </ul>
+                </div>
             </div>
         `;
+        
+        // Add styles for sequence completer game
+        const style = document.createElement('style');
+        style.textContent = `
+            .sequence-info {
+                margin: 20px 0;
+                text-align: center;
+            }
+            
+            .sequence-name {
+                font-size: 1.2em;
+                font-weight: bold;
+                color: #2196f3;
+                margin-bottom: 5px;
+            }
+            
+            .sequence-description {
+                font-style: italic;
+                color: #666;
+            }
+            
+            .sequence-display {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+                gap: 15px;
+                margin: 30px 0;
+                padding: 20px;
+                background-color: #e3f2fd;
+                border-radius: 8px;
+            }
+            
+            .sequence-number {
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.3em;
+                font-weight: bold;
+                background-color: white;
+                border-radius: 8px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                border: 2px solid #2196f3;
+                color: #0d47a1;
+            }
+            
+            .sequence-number.hidden {
+                background-color: #f5f5f5;
+                border: 2px dashed #2196f3;
+            }
+            
+            .sequence-input {
+                width: 100%;
+                height: 100%;
+                border: none;
+                background: transparent;
+                text-align: center;
+                font-size: 1.2em;
+                font-weight: bold;
+                color: #0d47a1;
+            }
+            
+            .sequence-input.correct {
+                background-color: #e8f5e9;
+                color: #2e7d32;
+            }
+            
+            .sequence-input.incorrect {
+                background-color: #ffebee;
+                color: #c62828;
+            }
+            
+            .sequence-feedback {
+                text-align: center;
+                font-weight: bold;
+                padding: 10px;
+                border-radius: 5px;
+                min-height: 20px;
+            }
+            
+            .feedback-correct {
+                background-color: #e8f5e9;
+                color: #2e7d32;
+            }
+            
+            .feedback-incorrect {
+                background-color: #ffebee;
+                color: #c62828;
+            }
+            
+            .feedback-partial {
+                background-color: #fff8e1;
+                color: #f57c00;
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Add event listeners for inputs
+        const inputs = gameArea.querySelectorAll('.sequence-input');
+        inputs.forEach((input, index) => {
+            // Remove any existing status classes on input
+            input.addEventListener('input', function() {
+                this.classList.remove('correct', 'incorrect');
+                
+                // If input contains a value and not the last input, focus the next one
+                if (this.value && index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+            });
+            
+            // Enter key should submit if it's the last input
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && index === inputs.length - 1) {
+                    document.getElementById('check-answer').click();
+                }
+            });
+        });
+        
+        // Check answer function for this game
+        window.checkAnswer = function(gameArea) {
+            const inputs = gameArea.querySelectorAll('.sequence-input');
+            const feedback = document.getElementById('sequence-feedback');
+            
+            // Check if all inputs have values
+            let allFilled = true;
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    allFilled = false;
+                }
+            });
+            
+            if (!allFilled) {
+                feedback.textContent = "Please fill in all the missing numbers!";
+                feedback.className = "sequence-feedback feedback-incorrect";
+                return;
+            }
+            
+            // Check if all inputs are correct
+            let allCorrect = true;
+            let correctCount = 0;
+            
+            inputs.forEach(input => {
+                const correctValue = parseInt(input.dataset.correct);
+                const userValue = parseInt(input.value.trim());
+                
+                if (isNaN(userValue) || userValue !== correctValue) {
+                    input.classList.add('incorrect');
+                    allCorrect = false;
+                } else {
+                    input.classList.add('correct');
+                    correctCount++;
+                }
+            });
+            
+            if (allCorrect) {
+                feedback.textContent = "Excellent! You completed the sequence correctly!";
+                feedback.className = "sequence-feedback feedback-correct";
+                
+                // Award points based on difficulty and number of correct answers
+                const points = 2 + difficulty; // 3-5 points based on difficulty
+                
+                const unlocked = DataManager.updateUserProgress(points);
+                UIManager.updateUserProfile();
+                
+                // Animation for correct answer
+                inputs.forEach(input => {
+                    input.classList.add('pulse');
+                });
+                
+                // Generate a new challenge after a delay
+                setTimeout(function() {
+                    Games.sequenceCompleter(gameArea);
+                }, 2500);
+            } else {
+                // Provide feedback based on how many are correct
+                const totalInputs = inputs.length;
+                if (correctCount > 0) {
+                    feedback.textContent = `You got ${correctCount} out of ${totalInputs} numbers correct. Keep trying!`;
+                    feedback.className = "sequence-feedback feedback-partial";
+                } else {
+                    feedback.textContent = "None of the numbers are correct. Study the pattern more carefully!";
+                    feedback.className = "sequence-feedback feedback-incorrect";
+                }
+            }
+        };
     },
 
     /**
-     * Helper function to generate wrong options for the Reading Large Numbers game
-     */
-    generateReadingOptions: function(correctAnswer, digitCount) {
-        const options = [correctAnswer];
-        
-        // Common mistakes to create wrong options
-        
-        // Option 1: Mix up lakhs and thousands
-        let option1 = correctAnswer;
-        if (digitCount >= 6 && correctAnswer.includes('lakh')) {
-            option1 = correctAnswer
-                .replace(/(\w+) lakh/, 'wrong1-placeholder')
-                .replace(/(\w+) thousand/, '$1 lakh')
-                .replace('wrong1-placeholder', '$1 thousand');
-        } else {
-            // If no lakhs, just mix the wording slightly
-            option1 = correctAnswer
-                .replace(/hundred/, 'hundred and')
-                .replace(/thousand/, 'thousand and');
-        }
-        
-        // Option 2: Use international system (million) instead of Indian (lakh)
-        let option2 = correctAnswer;
-        if (correctAnswer.includes('lakh')) {
-            const lakhValue = parseInt(correctAnswer.match(/(\w+) lakh/)[1]);
-            option2 = correctAnswer.replace(/(\w+) lakh/, `${lakhValue/10} million`);
-        } else {
-            // If no lakhs, mess up the hundreds place
-            option2 = correctAnswer.replace(/hundred (\w+)/, 'hundred and $1');
-        }
-        
-        // Option 3: Completely different number (use higher/lower digit)
-        const words = correctAnswer.split(' ');
-        let option3 = '';
-        
-        // Modify one of the digits
-        for (let i = 0; i < words.length; i++) {
-            if (['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'].includes(words[i])) {
-                const digitWords = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
-                const currentIndex = digitWords.indexOf(words[i]);
-                const newIndex = (currentIndex + 3) % 9; // shift by 3 to get a different digit
-                words[i] = digitWords[newIndex];
-                break;
-            }
-        }
-        option3 = words.join(' ');
-        
-        // Add wrong options if they're different from the correct answer
-        if (option1 !== correctAnswer) options.push(option1);
-        if (option2 !== correctAnswer && option2 !== option1) options.push(option2);
-        if (option3 !== correctAnswer && option3 !== option1 && option3 !== option2) options.push(option3);
-        
-        // If we don't have enough options, create more
-        while (options.length < 4) {
-            // Scramble some digits
-            const extraOption = correctAnswer.split(' ')
-                .map(word => {
-                    if (Math.random() < 0.3 && ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'].includes(word)) {
-                        const digitWords = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
-                        return digitWords[Math.floor(Math.random() * 9)];
-                    }
-                    return word;
-                })
-                .join(' ');
-                
-            if (!options.includes(extraOption)) {
-                options.push(extraOption);
-            }
-        }
-        
-        // Limit to 4 options
-        return options.slice(0, 4);
-    },
-    
-    /**
-     * Helper function to shuffle an array
+     * Utility function to shuffle an array (Fisher-Yates algorithm)
      */
     shuffleArray: function(array) {
         const newArray = [...array];
@@ -1297,104 +1664,6 @@ const Games = {
             [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
         }
         return newArray;
-    },
-
-    /**
-     * Helper function to convert a number to words in Indian system
-     */
-    getNumberInWords: function(number) {
-        // Units array for ones place
-        const units = [
-            '', 'one', 'two', 'three', 'four', 
-            'five', 'six', 'seven', 'eight', 'nine', 
-            'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 
-            'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'
-        ];
-        
-        // Tens array for tens place
-        const tens = [
-            '', '', 'twenty', 'thirty', 'forty', 
-            'fifty', 'sixty', 'seventy', 'eighty', 'ninety'
-        ];
-        
-        // Function to convert a 2-digit number to words
-        const getTwoDigits = (num) => {
-            if (num < 20) {
-                return units[num];
-            }
-            const unit = num % 10;
-            const ten = Math.floor(num / 10);
-            return unit ? `${tens[ten]}-${units[unit]}` : tens[ten];
-        };
-        
-        // Function to convert a 3-digit number to words
-        const getThreeDigits = (num) => {
-            const hundred = Math.floor(num / 100);
-            const remainder = num % 100;
-            
-            let result = '';
-            if (hundred) {
-                result += `${units[hundred]} hundred`;
-            }
-            
-            if (remainder) {
-                result += result ? ' ' : '';
-                result += getTwoDigits(remainder);
-            }
-            
-            return result;
-        };
-        
-        // Special case for zero
-        if (number === 0) {
-            return ['zero'];
-        }
-        
-        // Handle numbers in Indian system
-        let result = '';
-        
-        // Extract crores (if any)
-        const crore = Math.floor(number / 10000000);
-        if (crore > 0) {
-            result += `${getThreeDigits(crore)} crore`;
-            number %= 10000000;
-            if (number > 0) result += ' ';
-        }
-        
-        // Extract lakhs (if any)
-        const lakh = Math.floor(number / 100000);
-        if (lakh > 0) {
-            result += `${getTwoDigits(lakh)} lakh`;
-            number %= 100000;
-            if (number > 0) result += ' ';
-        }
-        
-        // Extract thousands (if any)
-        const thousand = Math.floor(number / 1000);
-        if (thousand > 0) {
-            result += `${getTwoDigits(thousand)} thousand`;
-            number %= 1000;
-            if (number > 0) result += ' ';
-        }
-        
-        // Extract hundreds, tens, and ones
-        if (number > 0) {
-            result += getThreeDigits(number);
-        }
-        
-        // Create alternate acceptable forms (e.g., with 'and' after hundred)
-        const alternateResults = [result];
-        
-        // Create an alternate form with 'and' after hundred if applicable
-        if (result.includes('hundred') && !result.includes('hundred and')) {
-            // Check if there are tens/ones after hundred
-            const parts = result.split(' hundred ');
-            if (parts.length > 1 && parts[1]) {
-                alternateResults.push(parts[0] + ' hundred and ' + parts[1]);
-            }
-        }
-        
-        return alternateResults;
     },
 };
 

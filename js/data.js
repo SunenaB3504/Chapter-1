@@ -79,27 +79,25 @@ const moduleData = [
             realLifeExamples: ["Reading car price tags", "Writing cheque amounts", "Reading population figures"],
             visualAids: ["Place value chart with periods", "Cheque writing practice", "Number name cards"]
         }
-    },
-    {
+    },    {
         id: 7,
         title: "Predecessor & Successor",
         description: "Understand numbers that come just before and after.",
         progress: 0,
-        unlocked: false,
-        games: ["numberNeighbors", "beforeAndAfter", "numberLine"],
+        unlocked: true,
+        games: ["predecessorConcept", "numberNeighbors", "beforeAndAfter", "numberLine"],
         conceptDetails: {
             mainConcepts: ["Predecessor (1 less)", "Successor (1 more)", "Number Sequences"],
             realLifeExamples: ["House numbers on a street", "Pages in a book", "Calendar dates"],
             visualAids: ["Number line jumps", "Before and after visualization", "Number train animation"]
         }
-    },
-    {
+    },    {
         id: 8,
         title: "Number Patterns",
         description: "Identify and complete exciting number patterns.",
         progress: 0,
-        unlocked: false,
-        games: ["patternDetective", "patternMaker", "sequenceCompleter"],
+        unlocked: true,
+        games: ["patternsConcept", "patternDetective", "patternMaker", "sequenceCompleter"],
         conceptDetails: {
             mainConcepts: ["Increasing Patterns", "Decreasing Patterns", "Skip Counting"],
             realLifeExamples: ["Calendar patterns", "House number patterns", "Growth patterns in nature"],
