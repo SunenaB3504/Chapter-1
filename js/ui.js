@@ -3,10 +3,8 @@
  * Manages rendering and UI interactions
  */
 
-import DataManager from './data.js';
-import GameLoader from './gameLoader.js';
-
-const UIManager = {
+// Create global UIManager object
+window.UIManager = {
     /**
      * Render all modules
      */
@@ -105,14 +103,13 @@ const UIManager = {
         gameContainer.style.display = 'block';
         
         // Set game title
-        document.getElementById('game-title').textContent = module.title;
-        
-        // Create game navigation menu
+        document.getElementById('game-title').textContent = module.title;        // Create game navigation menu
         this.createGameNavigationMenu(module);
         
         // Load first game by default
         if (module.games && module.games.length > 0) {
-            GameLoader.loadGame(module.games[0]);
+            // Use a helper function to safely load games
+            this.safeLoadGame(module.games[0]);
         }
     },
     
@@ -163,14 +160,12 @@ const UIManager = {
             button.className = 'nav-button';
             button.textContent = gameNames[gameId] || `Exercise ${index + 1}`;
             button.dataset.gameId = gameId;
-            
-            button.addEventListener('click', () => {
+              button.addEventListener('click', () => {
                 // Update active button styling
                 document.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
-                
-                // Load the selected game
-                GameLoader.loadGame(gameId);
+                  // Load the selected game using the safe method
+                UIManager.safeLoadGame(gameId);
             });
             
             // Set first button as active
@@ -250,6 +245,33 @@ const UIManager = {
         } else {
             feedback.className = 'feedback';
         }
+    },    /**
+     * Safely load a game
+     */
+    safeLoadGame: function(gameId) {
+        if (typeof window.GameLoader === 'undefined') {
+            console.error('GameLoader is not defined. Check script loading order.');
+            
+            // Create simple error message in the game area
+            const gameArea = document.getElementById('game-area');
+            if (gameArea) {
+                gameArea.innerHTML = `
+                    <div style="text-align: center; padding: 20px; color: #d32f2f;">
+                        <h3>Error: GameLoader Not Found</h3>
+                        <p>The game system couldn't be initialized properly. Please refresh the page and try again.</p>
+                    </div>
+                `;
+            }
+            return;
+        }
+        
+        if (typeof window.GameLoader.loadGame !== 'function') {
+            console.error('GameLoader.loadGame is not a function.');
+            return;
+        }
+        
+        // If we reach here, GameLoader is properly defined
+        window.GameLoader.loadGame(gameId);
     },
     
     /**
@@ -272,4 +294,4 @@ const UIManager = {
     }
 };
 
-export default UIManager;
+// Note: No export needed - UIManager is now available as a global object

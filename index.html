@@ -45,9 +45,50 @@
             <div style="text-align: center; margin-top: 20px;">
                 <button class="btn" id="check-answer">Check Answer</button>
                 <button class="btn btn-secondary" id="back-to-modules">Back to Modules</button>
-            </div>        </div>
-    </div>
+        </div>        </div>    </div>    <!-- Load scripts in the correct order -->
+    <!-- Initialize core objects first -->
+    <script src="js/init.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/games.js"></script>
+    <script src="js/place-value-implementation.js"></script>
+    <script src="js/place-value-extras-implementation.js"></script>
+    <script src="js/expanded-form-implementation.js"></script>
+    <script src="js/number-comparison-implementation.js"></script>
+    <script src="js/number-arrangement-implementation.js"></script>
+    <script src="js/large-number-implementation.js"></script>
+    <script src="js/number-sequence-implementation.js"></script>
+    <script src="js/digit-games-implementation.js"></script>    <script src="js/financial-games-implementation.js"></script>
+    <script src="js/data-interpretation-implementation.js"></script>
+    <script src="js/pattern-games-implementation.js"></script>
+    <script>
+        // Diagnostic script to check global objects before loading gameLoader
+        console.log("Before gameLoader: Games object exists:", typeof window.Games !== 'undefined');
+    </script>
+    <script src="js/gameLoader.js"></script>
+    <script>
+        // Diagnostic check after gameLoader loads
+        console.log("After gameLoader: GameLoader exists:", typeof window.GameLoader !== 'undefined');
+        console.log("GameLoader object:", window.GameLoader);
+        // Ensure GameLoader is initialized before proceeding
+        if (!window.GameLoader) {
+            console.error("GameLoader not initialized properly");
+        } else {
+            console.log("GameLoader initialized successfully in correct order");
+        }
+    </script>
+    <script src="js/ui.js"></script>
     
-    <script type="module" src="js/app.js"></script>
+    <!-- Initialize the application -->
+    <script>
+        // Initialize the application when page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            // Initialize UI
+            if (window.UIManager) {
+                UIManager.updateUserProfile();
+                UIManager.renderModules();
+                UIManager.initEventListeners();
+            }
+        });
+    </script>
 </body>
 </html>

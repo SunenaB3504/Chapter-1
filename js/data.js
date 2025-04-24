@@ -3,14 +3,16 @@
  * Manages modules data and user progress data
  */
 
+// Create a global DataManager object
+window.DataManager = {};
+
 // Module data
-const moduleData = [
-    {        id: 1,
+const moduleData = [    {        id: 1,
         title: "Place Value Revision",
         description: "Review place values and understand the difference between face value and place value.",
         progress: 100,
         unlocked: true,
-        games: ["placeValueDetective", "buildANumber", "faceValueChallenge", "placeValueBlocks"],
+        games: ["placeValueConcept", "placeValueDetective", "buildANumber", "faceValueChallenge", "placeValueBlocks"],
         conceptDetails: {
             mainConcepts: ["Place Value", "Face Value", "Relationship Between Place Values"],
             realLifeExamples: ["Reading price tags", "Reading house numbers", "Organizing books by page number"],
@@ -103,44 +105,41 @@ const moduleData = [
             realLifeExamples: ["Calendar patterns", "House number patterns", "Growth patterns in nature"],
             visualAids: ["Interactive pattern tiles", "Growth animations", "Pattern connecting dots"]
         }
-    },
-    {
+    },    {
         id: 9,
         title: "Smallest & Largest Numbers",
         description: "Form the smallest and largest numbers using given digits.",
         progress: 0,
-        unlocked: false,
-        games: ["digitSorter", "numberExtremes", "digitConstraints"],
+        unlocked: true,
+        games: ["smallestLargestConcept", "digitSorter", "numberExtremes", "digitConstraints"],
         conceptDetails: {
             mainConcepts: ["Digit Arrangement", "Place Value Importance", "Constraint-based Numbers"],
             realLifeExamples: ["High score and low score in games", "Highest and lowest temperatures", "Maximum and minimum prices"],
             visualAids: ["Digit cards to arrange", "Thermometer visualization", "Number line extremes"]
         }
-    },
-    {
+    },    {
         id: 10,
         title: "Real-Life Math",
         description: "Apply number concepts in everyday situations.",
         progress: 0,
-        unlocked: false,
-        games: ["billDetective", "chequeWriter", "atmSimulator"],
+        unlocked: true,
+        games: ["realLifeMathConcept", "billDetective", "chequeWriter", "atmSimulator"],
         conceptDetails: {
             mainConcepts: ["Reading Bills", "Writing Cheques", "Managing Money"],
             realLifeExamples: ["Electricity bill reading", "Writing amounts on cheques", "ATM transactions"],
             visualAids: ["Interactive bill samples", "Cheque filling practice", "ATM interface simulation"]
         }
-    },
-    {
+    },    {
         id: 11,
         title: "Data Interpretation",
         description: "Read and interpret data from tables and visual representations.",
         progress: 0,
-        unlocked: false,
-        games: ["mapReader", "tableInterpreter", "visualData"],
+        unlocked: true,
+        games: ["dataInterpretationConcept", "pictureGraphInterpreter", "barGraphInterpreter", "tableInterpreter"],
         conceptDetails: {
-            mainConcepts: ["Reading Maps with Numbers", "Table Interpretation", "Visual Data Analysis"],
-            realLifeExamples: ["India's river lengths map", "Temperature charts", "Population tables"],
-            visualAids: ["Interactive maps", "Color-coded data tables", "Bar graph visualizations"]
+            mainConcepts: ["Reading Picture Graphs", "Bar Graph Analysis", "Table Interpretation"],
+            realLifeExamples: ["Fruit sales charts", "Temperature graphs", "School attendance tables"],
+            visualAids: ["Interactive graphs", "Color-coded data tables", "Bar graph visualizations"]
         }
     }
 ];
@@ -155,8 +154,9 @@ let userData = {
     completedGames: []
 };
 
-// Data management functions
-const DataManager = {
+// Data management functions - attach to global DataManager
+// (created at the top of the file)
+window.DataManager = {
     /**
      * Get all module data
      */
@@ -206,8 +206,7 @@ const DataManager = {
             userData.completedGames.push(gameId);
         }
     },
-    
-    /**
+      /**
      * Update module progress
      */
     updateModuleProgress: function(moduleId, progress) {
@@ -218,4 +217,4 @@ const DataManager = {
     }
 };
 
-export default DataManager;
+// Note: No export needed - DataManager is now available as a global object
