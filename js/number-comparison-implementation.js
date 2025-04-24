@@ -6,6 +6,353 @@
 window.Games = window.Games || {};
 
 /**
+ * Comparison Symbols Game - Complete inequality chains and number comparisons
+ */
+window.Games.comparingSymbols = function(gameArea) {
+    // Determine difficulty based on user level
+    const userData = DataManager.getUserData();
+    let digits = 3;
+    let numInChain = 3; // Default: 3 numbers in chain (2 symbols)
+    
+    if (userData.level >= 3) {
+        digits = 4;
+        numInChain = 4; // 4 numbers in chain (3 symbols)
+    }
+    if (userData.level >= 5) {
+        digits = 5;
+        numInChain = 5; // 5 numbers in chain (4 symbols)
+    }
+    
+    // Generate ordered numbers with appropriate gaps
+    const min = Math.pow(10, digits - 1);
+    const max = Math.pow(10, digits) - 1;
+    
+    // Function to generate a chain of ordered numbers
+    function generateOrderedNumbers(count, ascending) {
+        const numbers = [];
+        let current = Math.floor(Math.random() * (max - min * count)) + min;
+        
+        numbers.push(current);
+        
+        for (let i = 1; i < count; i++) {
+            // Create gaps between numbers (increasing as level increases)
+            const gap = Math.floor(Math.random() * (max / (10 * count))) + (min / 10);
+            current = ascending ? current + gap : current - gap;
+            numbers.push(current);
+        }
+        
+        return ascending ? numbers : numbers.reverse();
+    }
+    
+    // Decide if we'll use ascending or descending order (randomly)
+    const isAscending = Math.random() < 0.5;
+    
+    // Generate the ordered chain of numbers
+    const orderedNumbers = generateOrderedNumbers(numInChain, isAscending);
+    
+    // Create an array to track the correct symbols between each pair
+    const correctSymbols = [];
+    for (let i = 0; i < orderedNumbers.length - 1; i++) {
+        if (orderedNumbers[i] < orderedNumbers[i+1]) {
+            correctSymbols.push('<');
+        } else if (orderedNumbers[i] > orderedNumbers[i+1]) {
+            correctSymbols.push('>');
+        } else {
+            correctSymbols.push('=');
+        }
+    }
+    
+    // Randomly decide which positions to leave blank for the student to fill in
+    const totalSymbols = correctSymbols.length;
+    const numToFill = Math.min(3, totalSymbols);
+    const blankPositions = [];
+    
+    while (blankPositions.length < numToFill) {
+        const pos = Math.floor(Math.random() * totalSymbols);
+        if (!blankPositions.includes(pos)) {
+            blankPositions.push(pos);
+        }
+    }
+    
+    // Create HTML for the game
+    gameArea.innerHTML = `
+        <div style="background-color: #f0f7ff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            <h3 style="text-align: center;">Comparison Chains</h3>
+            <p style="text-align: center;">Complete the comparison chain by filling in the missing symbols</p>
+            
+            <div class="comparison-chain-container">
+                <div class="comparison-chain">
+                    ${orderedNumbers.map((num, index) => {
+                        // This is the last number in the chain
+                        if (index === orderedNumbers.length - 1) {
+                            return `<div class="chain-number">${num}</div>`;
+                        }
+                        
+                        // Check if this position needs a symbol filled in
+                        const needsSymbol = blankPositions.includes(index);
+                        
+                        // If the position needs a symbol, show dropdown; otherwise show the correct symbol
+                        const symbolHTML = needsSymbol ? 
+                            `<div class="chain-symbol empty" data-index="${index}">
+                                <select class="symbol-select" data-correct="${correctSymbols[index]}">
+                                    <option value="">?</option>
+                                    <option value="<">&lt;</option>
+                                    <option value="=">=</option>
+                                    <option value=">">&gt;</option>
+                                </select>
+                            </div>` : 
+                            `<div class="chain-symbol">${correctSymbols[index] === '<' ? '&lt;' : correctSymbols[index]}</div>`;
+                        
+                        return `
+                            <div class="chain-number">${num}</div>
+                            ${symbolHTML}
+                        `;
+                    }).join('')}
+                </div>
+                
+                <div class="chain-feedback" id="chain-feedback"></div>
+                
+                <div class="chain-explanation" id="chain-explanation" style="display: none;">
+                    <h4>Understanding Comparison Chains</h4>
+                    <div class="explanation-content"></div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 20px; padding: 15px; background-color: #f8f9fa; border-radius: 8px;">
+                <p style="margin: 0;"><strong>Tips for Comparison Chains:</strong></p>
+                <ul style="margin-top: 5px;">
+                    <li>Compare each pair of adjacent numbers</li>
+                    <li>&lt; means "less than" (the smaller number points to the larger one)</li>
+                    <li>&gt; means "greater than" (the larger number points to the smaller one)</li>
+                    <li>= means the numbers are equal</li>
+                    <li>A chain like 5 &lt; 10 &lt; 15 shows increasing order</li>
+                </ul>
+            </div>
+        </div>
+    `;
+    
+    // Add styles for the comparison chain game
+    const style = document.createElement('style');
+    style.textContent = `
+        .comparison-chain-container {
+            margin: 30px 0;
+        }
+        
+        .comparison-chain {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 15px;
+            background-color: #e3f2fd;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .chain-number {
+            min-width: 80px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3em;
+            font-weight: bold;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border: 2px solid #2196f3;
+            color: #0d47a1;
+            padding: 0 10px;
+        }
+        
+        .chain-symbol {
+            min-width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #2196f3;
+        }
+        
+        .chain-symbol.empty {
+            border: 2px dashed #2196f3;
+            border-radius: 50%;
+            background-color: #e1f5fe;
+        }
+        
+        .symbol-select {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: transparent;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #0d47a1;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            cursor: pointer;
+            padding: 0 5px;
+        }
+        
+        .symbol-select:focus {
+            outline: none;
+        }
+        
+        .chain-feedback {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            min-height: 24px;
+        }
+        
+        .chain-feedback.correct {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+        
+        .chain-feedback.incorrect {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+        
+        .chain-explanation {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #e8f5e9;
+            display: none;
+        }
+        
+        .chain-explanation h4 {
+            margin-top: 0;
+            color: #2e7d32;
+            text-align: center;
+        }
+        
+        .explanation-content {
+            font-size: 1.1em;
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 600px) {
+            .chain-number {
+                min-width: 60px;
+                height: 50px;
+                font-size: 1.1em;
+            }
+            
+            .chain-symbol {
+                min-width: 30px;
+                height: 30px;
+                font-size: 1.2em;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // Check answer function for this game
+    window.checkAnswer = function(gameArea) {
+        const selects = gameArea.querySelectorAll('.symbol-select');
+        const feedback = document.getElementById('chain-feedback');
+        const explanation = document.getElementById('chain-explanation');
+        const explanationContent = explanation.querySelector('.explanation-content');
+        
+        let allCorrect = true;
+        let allFilled = true;
+        
+        // Check each symbol selection
+        selects.forEach(select => {
+            const userAnswer = select.value;
+            const correctAnswer = select.dataset.correct;
+            
+            // Check if the selection is empty
+            if (userAnswer === '') {
+                allFilled = false;
+            } 
+            // Check if the selection is correct
+            else if (userAnswer === correctAnswer) {
+                select.parentElement.classList.add('correct');
+            } else {
+                select.parentElement.classList.add('incorrect');
+                allCorrect = false;
+            }
+        });
+        
+        // If not all selections are filled, show message
+        if (!allFilled) {
+            feedback.textContent = 'Please fill in all the missing comparison symbols!';
+            feedback.className = 'chain-feedback incorrect';
+            return;
+        }
+        
+        // If all selections are filled and correct
+        if (allCorrect) {
+            feedback.textContent = 'Correct! You completed the comparison chain!';
+            feedback.className = 'chain-feedback correct';
+            
+            // Show explanation
+            explanation.style.display = 'block';
+            explanationContent.innerHTML = generateExplanation(orderedNumbers, correctSymbols);
+            
+            // Award points and update UI
+            const unlocked = DataManager.updateUserProgress(2);
+            UIManager.updateUserProfile();
+            
+            // Generate a new challenge after a delay
+            setTimeout(function() {
+                Games.comparingSymbols(gameArea);
+            }, 3000);
+        } else {
+            feedback.textContent = 'Some symbols are incorrect. Try again!';
+            feedback.className = 'chain-feedback incorrect';
+        }
+    };
+    
+    // Helper function to generate explanation
+    function generateExplanation(numbers, symbols) {
+        let explanation = '<p>Let\'s understand this comparison chain:</p><ul>';
+        
+        for (let i = 0; i < symbols.length; i++) {
+            const num1 = numbers[i];
+            const num2 = numbers[i + 1];
+            const symbol = symbols[i];
+            
+            let relationship;
+            if (symbol === '<') {
+                relationship = 'less than';
+            } else if (symbol === '>') {
+                relationship = 'greater than';
+            } else {
+                relationship = 'equal to';
+            }
+            
+            explanation += `<li>${num1} is ${relationship} ${num2}</li>`;
+        }
+        
+        if (numbers.length > 2) {
+            // Add an overall explanation for the entire chain
+            if (symbols.every(s => s === '<')) {
+                explanation += `<li>The numbers are in <strong>increasing order</strong> from left to right.</li>`;
+            } else if (symbols.every(s => s === '>')) {
+                explanation += `<li>The numbers are in <strong>decreasing order</strong> from left to right.</li>`;
+            } else {
+                explanation += `<li>This is a <strong>mixed comparison chain</strong> with different relationships.</li>`;
+            }
+        }
+        
+        explanation += '</ul>';
+        return explanation;
+    }
+};
+
+/**
  * Number Battle Game - Compare numbers using <, >, = symbols
  */
 window.Games.numberBattle = function(gameArea) {

@@ -71,6 +71,9 @@ window.GameLoader = {
         case 'riverLengthCompare':
           window.Games.riverLengthCompare(gameArea);
           break;
+        case 'comparingSymbols':
+          window.Games.comparingSymbols(gameArea);
+          break;
         case 'lakhsConcept':
           gameArea.dataset.conceptModule = 'lakhs';
           window.Games.conceptIntro(gameArea);
@@ -155,9 +158,11 @@ window.GameLoader = {
           break;
         case 'placeValueBlocks':
           window.Games.placeValueBlocks(gameArea);
-          break;
-        case 'expandedFormBuilder':
+          break;        case 'expandedFormBuilder':
           window.Games.expandedFormBuilder(gameArea);
+          break;
+        case 'placeValuePuzzle':
+          window.Games.placeValuePuzzle(gameArea);
           break;
         case 'numberSorter':
           window.Games.numberSorter(gameArea);
